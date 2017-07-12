@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "describes": "Schema of catalogue entries",
+  "version": "1.0.0",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "describes": "unique identifier within this domain"
+    },
+    "version": {
+      "type": "string",
+      "describes": "Current version of the schema as per Semantic Versioning major:minor:patch"
+    },
+    "type": {
+      "type": "string",
+      "describes": "Indicates the type of the data source (e.g. streetlight )"
+    },
+    "tags": {
+      "type": "array",
+      "minItems": 0,
+      "describes": "any strings which annotates this resource",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lat": {
+      "type": "number",
+      "describes": "Latitude",
+      "ontologyRef": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+    },
+    "data_schema": {
+      "type": "object",
+      "describes": "Schema of the data from the information source",
+      "anyOf": [
+        {
+          "$ref": "http://json-schema.org/draft-04/schema#"
+        }
+      ]
+    }
+  },
+  "additionalProperties": {
+    "type": "string"
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema":"href to catalogue_schema",
+  "id": "rbc_sl_1",
+  "type": "streetlight",
+  "tags": [
+    "InBuilding",
+    "Energy"
+  ],
+  "data_schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "describes": "Schema of data from the device as per the JSON Schema",
+    "type": "object",
+    "properties": {
+      "caseTemperature": {
+        "type": "number",
+        "describes": "muo:Temperature",
+        "units": "degreeCelsius"
+      }
+    }
+  }
+}
