@@ -3,18 +3,123 @@
   "describes": "Schema of catalogue entries",
   "version": "1.0.0",
   "type": "object",
+  "definitions": {
+    "valueSchema": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": [
+            "null",
+            "string",
+            "number",
+            "boolean",
+            "array"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "describes": "some more info on this parameter"
+        },
+        "ontologyRef": {
+          "type": "string",
+          "format": "uri"
+        },
+        "readOnly": {
+          "type": "boolean",
+          "describes": "if true, indicates that the parameter is only readable"
+        },
+        "accessModifier": {
+          "enum": [
+            "public",
+            "private",
+            "protected"
+          ],
+          "describes": "public: everyone is allowed access to this resource. protected: only authorised access is allowed but everyone can see its presence, private: only owner of resource can see or access it"
+        }
+      },
+      "required": [
+        "value",
+        "description",
+        "accessModifier"
+      ]
+    },
+    "ownerSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "describes": "Owner's Name"
+        },
+        "website": {
+          "type": "string",
+          "format": "uri"
+        },
+        "requestAccessSite": {
+          "type": "string",
+          "format": "uri",
+          "describes": "URI to get permissions (e.g. tokens) to access to the resource"
+        },
+        "accessEndPoint": {
+          "type": "string",
+          "format": "uri",
+          "describes": "URI to access the resource"
+        },
+        "subscriptionEndPoint": {
+          "type": "string",
+          "format": "uri",
+          "describes": "URI to subscribe to the resource changes"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "latlongschema": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "GISOntologyRef": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "value",
+        "GISOntologyRef"
+      ]
+    },
+    "resourceDataSchema": {
+      "type": "object",
+      "patternProperties": {
+        "[a-zA-Z0-9]+$": {
+          "$ref": "#/definitions/valueSchema"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
   "properties": {
     "id": {
       "type": "string",
-      "describes": "unique identifier within this domain"
+      "describes": "unique identifier of the data resource within this domain"
     },
-    "version": {
-      "type": "string",
-      "describes": "Current version of the schema as per Semantic Versioning major:minor:patch"
+    "UI": {
+      "type": "object",
+      "describes": "Globally unique identifier for the resource. E.g IMEI numbers, UUID, MacID etc.",
+      "$ref": "#/definitions/valueSchema"
     },
-    "type": {
+    "resourceSchemaVersion": {
       "type": "string",
-      "describes": "Indicates the type of the data source (e.g. streetlight )"
+      "describes": "Current version of the resource schema as per Semantic Versioning major:minor:patch"
+    },
+    "owner": {
+      "$ref": "#/definitions/ownerSchema"
+    },
+    "resourceType": {
+      "type": "string",
+      "describes": "Indicates the type of data source (e.g. streetlight )"
     },
     "tags": {
       "type": "array",
@@ -24,19 +129,27 @@
         "type": "string"
       }
     },
-    "lat": {
-      "type": "number",
-      "describes": "Latitude",
-      "ontologyRef": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+    "latitude": {
+      "$ref": "#/definitions/latlongschema",
+      "describes": "latitude"
+    },
+    "longitude": {
+      "$ref": "#/definitions/latlongschema",
+      "describes": "latitude"
+    },
+    "altitude": {
+      "$ref": "#/definitions/latlongschema",
+      "describes": "latitude"
+    },
+    "additionalResourceInfo": {
+      "type": "string",
+      "format": "uri",
+      "describes": "Link to get additional information for this resource"
     },
     "data_schema": {
       "type": "object",
       "describes": "Schema of the data from the information source",
-      "anyOf": [
-        {
-          "$ref": "http://json-schema.org/draft-04/schema#"
-        }
-      ]
+      "$ref": "#/definitions/resourceDataSchema"
     }
   },
   "additionalProperties": {
@@ -44,6 +157,7 @@
   },
   "required": [
     "id",
-    "type"
+    "resourceType",
+    "owner"
   ]
 }
