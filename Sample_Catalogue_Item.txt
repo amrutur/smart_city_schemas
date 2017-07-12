@@ -1,21 +1,117 @@
 {
-  "$schema":"href to catalogue_schema",
+  "$schema": "https://github.com/amrutur/smart_city_schemas/blob/master/catalogue_schema.txt",
   "id": "rbc_sl_1",
-  "type": "streetlight",
+  "resourceSchemaVersion": "1.0.0",
+  "resourceType": "streetlight",
   "tags": [
-    "InBuilding",
-    "Energy"
+    "onstreet",
+    "Energy",
+    "still under development!"
   ],
+  "UI": {
+    "value": "1234",
+    "description": "Globally Unique ID of the resource",
+    "accessModifier": "private"
+  },
+  "latitude": {
+    "value": 13.0143335,
+    "GISOntologyRef": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+  },
+  "longitude": {
+    "value": 77.5678424,
+    "GISOntologyRef": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+  },
+  "owner": {
+    "name": "Robert Bosch Centre for Cyber Physical Systems, IISc",
+    "website": "http://rbccps.org",
+    "requestAccessSite": "http://rbccps.org/requestAccess",
+    "accessEndPoint": "https://rbccps.org/api/{id}",
+    "subscriptionEndPoint": "mqtt://rbccps.org/subscription/{id}"
+  },
+  "additionalResourceInfo": "http://rbccps.org/resourceInfo",
   "data_schema": {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "describes": "Schema of data from the device as per the JSON Schema",
-    "type": "object",
-    "properties": {
-      "caseTemperature": {
-        "type": "number",
-        "describes": "muo:Temperature",
-        "units": "degreeCelsius"
-      }
+    "samplingTime": {
+      "value": "number",
+      "format": "UTC",
+      "description": "Sampling Time",
+      "units": "seconds",
+      "readOnly": true,
+      "accessModifier": "public"
+    },
+    "caseTemperature": {
+      "value": "number",
+      "description": "Temperature of the device casing",
+      "units": "degreeCelsius",
+      "readOnly": true,
+      "accessModifier": "public"
+    },
+    "powerConsumption": {
+      "value": "number",
+      "description": "Power consumption of the device",
+      "units": "watts",
+      "readOnly": true,
+      "accessModifier": "public"
+    },
+    "luxOutput": {
+      "value": "number",
+      "description": "lux output of LED measured at LED",
+      "units": "lux",
+      "readOnly": true,
+      "accessModifier": "public"
+    },
+    "ambientLux": {
+      "value": "number",
+      "description": "lux value of ambient",
+      "units": "lux",
+      "readOnly": true,
+      "accessModifier": "public"
+    },
+    "targetPowerState": {
+      "value": [
+        "ON",
+        "OFF"
+      ],
+      "description": "If set to ON, turns ON the device. If OFF turns OFF the device. Writeable parameter. Writeable only allowed for authorized apps",
+      "accessModifier": "protected"
+    },
+    "targetBrightnessLevel": {
+      "value": "number",
+      "description": "Number between 0 to 100 to indicate the percentage brightness level. Writeable only allowed for authorized apps",
+      "units": "percent",
+      "accessModifier": "protected"
+    },
+    "targetControlPolicy": {
+      "value": [
+        "AUTO_TIMER",
+        "AUTO_LUX",
+        "MANUAL"
+      ],
+      "description": "Indicates which of the behaviours the device should implement. AUTO_TIMER is timer based, AUTO_LUX uses ambient light and MANUAL is controlled by app. Writeable only allowed for authorized apps",
+      "accessModifier": "protected"
+    },
+    "targetOnTime": {
+      "value": "number",
+      "description": "Indicates time of day in seconds from 12 midnight when device turns ON in AUTO_TIMER. Writeable only allowed for authorized apps",
+      "units": "seconds",
+      "accessModifier": "protected"
+    },
+    "targetOffTime": {
+      "value": "number",
+      "description": "Indicates time of day in seconds from 12 midnight when device turns OFF in AUTO_TIMER. Writeable only allowed for authorized apps",
+      "units": "seconds",
+      "accessModifier": "protected"
+    },
+    "targetOnLux": {
+      "value": "number",
+      "description": "Indicates ambient lux when device turns ON in AUTO_LUX. Writeable only allowed for authorized apps",
+      "units": "seconds",
+      "accessModifier": "protected"
+    },
+    "targetOffLux": {
+      "value": "number",
+      "description": "Indicates ambient lux when device turns OFF in AUTO_LUX. Writeable only allowed for authorized apps",
+      "units": "seconds",
+      "accessModifier": "protected"
     }
   }
 }
