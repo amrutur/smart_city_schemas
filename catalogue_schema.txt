@@ -43,17 +43,9 @@
         "accessModifier"
       ]
     },
-    "ownerSchema": {
+    "accessMechanismSchema": {
       "type": "object",
       "properties": {
-        "name": {
-          "type": "string",
-          "describes": "Owner's Name"
-        },
-        "website": {
-          "type": "string",
-          "format": "uri"
-        },
         "requestAccessSite": {
           "type": "string",
           "format": "uri",
@@ -64,6 +56,11 @@
           "format": "uri",
           "describes": "URI to access the resource"
         },
+        "additionalResourceInfo": {
+          "type": "string",
+          "format": "uri",
+          "describes": "Link to get additional information for this resource"
+        },
         "subscriptionEndPoint": {
           "type": "string",
           "format": "uri",
@@ -71,8 +68,39 @@
         }
       },
       "required": [
+        "accessEndPoint",
+        "subscriptionEndPoint"
+      ]
+    },
+    "ownerSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "describes": "Owner's Name"
+        },
+        "website": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "required": [
         "name"
       ]
+    },
+    "geoLocationSchema": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string",
+          "describes": "Street address of the resource"
+        },
+        "mapid": {
+          "type": "string",
+          "format": "uri",
+          "describes": "Maps the resource on a map (see https://mapid.mapunity.in/)"
+        }
+      }
     },
     "latlongschema": {
       "type": "object",
@@ -117,6 +145,15 @@
     "owner": {
       "$ref": "#/definitions/ownerSchema"
     },
+    "provider": {
+      "$ref": "#/definitions/ownerSchema"
+    },
+    "accessMechanism": {
+      "$ref": "#/definitions/accessMechanismSchema"
+    },
+    "geoLocation": {
+      "$ref": "#/definitions/geoLocationSchema"
+    },
     "resourceType": {
       "type": "string",
       "describes": "Indicates the type of data source (e.g. streetlight )"
@@ -141,11 +178,6 @@
       "$ref": "#/definitions/latlongschema",
       "describes": "latitude"
     },
-    "additionalResourceInfo": {
-      "type": "string",
-      "format": "uri",
-      "describes": "Link to get additional information for this resource"
-    },
     "data_schema": {
       "type": "object",
       "describes": "Schema of the data from the information source",
@@ -153,7 +185,7 @@
     }
   },
   "additionalProperties": {
-    "type": "string"
+    "type": ["string", "object"]
   },
   "required": [
     "id",
