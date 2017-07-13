@@ -22,13 +22,19 @@
     "GISOntologyRef": "http://www.w3.org/2003/01/geo/wgs84_pos#"
   },
   "owner": {
+    "name": "IISC",
+    "website": "http://www.iisc.ac.in"
+  },
+  "provider": {
     "name": "Robert Bosch Centre for Cyber Physical Systems, IISc",
-    "website": "http://rbccps.org",
+    "website": "http://rbccps.org"
+  },
+  "accessMechanism": {
     "requestAccessSite": "http://rbccps.org/requestAccess",
     "accessEndPoint": "https://rbccps.org/api/{id}",
-    "subscriptionEndPoint": "mqtt://rbccps.org/subscription/{id}"
+    "subscriptionEndPoint": "mqtt://rbccps.org/subscription/{id}",
+    "additionalResourceInfo": "http://rbccps.org/resourceInfo"
   },
-  "additionalResourceInfo": "http://rbccps.org/resourceInfo",
   "data_schema": {
     "samplingTime": {
       "value": "number",
