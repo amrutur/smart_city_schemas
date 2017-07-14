@@ -85,39 +85,41 @@
       "description": "Number between 0 to 100 to indicate the percentage brightness level. Writeable only allowed for authorized apps",
       "units": "percent",
       "accessModifier": "protected"
-    },
-    "targetControlPolicy": {
-      "value": [
-        "AUTO_TIMER",
-        "AUTO_LUX",
-        "MANUAL"
-      ],
-      "description": "Indicates which of the behaviours the device should implement. AUTO_TIMER is timer based, AUTO_LUX uses ambient light and MANUAL is controlled by app. Writeable only allowed for authorized apps",
-      "accessModifier": "protected"
-    },
-    "targetOnTime": {
-      "value": "number",
-      "description": "Indicates time of day in seconds from 12 midnight when device turns ON in AUTO_TIMER. Writeable only allowed for authorized apps",
-      "units": "seconds",
-      "accessModifier": "protected"
-    },
-    "targetOffTime": {
-      "value": "number",
-      "description": "Indicates time of day in seconds from 12 midnight when device turns OFF in AUTO_TIMER. Writeable only allowed for authorized apps",
-      "units": "seconds",
-      "accessModifier": "protected"
-    },
-    "targetOnLux": {
-      "value": "number",
-      "description": "Indicates ambient lux when device turns ON in AUTO_LUX. Writeable only allowed for authorized apps",
-      "units": "seconds",
-      "accessModifier": "protected"
-    },
-    "targetOffLux": {
-      "value": "number",
-      "description": "Indicates ambient lux when device turns OFF in AUTO_LUX. Writeable only allowed for authorized apps",
-      "units": "seconds",
-      "accessModifier": "protected"
+    }
+  },
+  "method_schema": {
+    "setControlPolicy": {
+       "params": {
+           "controlPolicy": {
+              "value": [ "AUTO_TIMER", "AUTO_LUX", "MANUAL" ],
+              "description": "Indicates which of the behaviours the device should implement. AUTO_TIMER is timer based, AUTO_LUX uses ambient light and MANUAL is controlled by app. Writeable only allowed for authorized apps",
+             "accessModifier": "protected"
+           },
+           "targetOnTime": {
+             "value": "number",
+             "description": "Indicates time of day in seconds from 12 midnight when device turns ON in AUTO_TIMER. Writeable only allowed for authorized apps",
+             "units": "seconds",
+             "accessModifier": "protected"
+           },
+           "targetOffTime": {
+             "value": "number",
+             "description": "Indicates time of day in seconds from 12 midnight when device turns OFF in AUTO_TIMER. Writeable only allowed for authorized apps",
+             "units": "seconds",
+             "accessModifier": "protected"
+           },
+           "targetOnLux": {
+             "value": "number",
+             "description": "Indicates ambient lux when device turns ON in AUTO_LUX. Writeable only allowed for authorized apps",
+             "units": "seconds",
+             "accessModifier": "protected"
+           },
+           "targetOffLux": {
+             "value": "number",
+             "description": "Indicates ambient lux when device turns OFF in AUTO_LUX. Writeable only allowed for authorized apps",
+             "units": "seconds",
+             "accessModifier": "protected"
+           }
+       }
     }
   }
 }

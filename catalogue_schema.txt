@@ -126,6 +126,15 @@
         }
       },
       "additionalProperties": false
+    },
+    "resourceParamsSchema": {
+      "type": "object",
+      "patternProperties": {
+        "[a-zA-Z0-9]+$": {
+          "$ref": "#/definitions/valueSchema"
+        }
+      },
+      "additionalProperties": false
     }
   },
   "properties": {
@@ -182,6 +191,24 @@
       "type": "object",
       "describes": "Schema of the data from the information source",
       "$ref": "#/definitions/resourceDataSchema"
+    },
+    "method_schema": {
+      "type": "object",
+      "describes": "Schema of the methods available to modify the behaviour of the data source (actuation, setting up of config parameters etc.)",
+      "patternProperties": {
+         "[a-zA-Z0-9]+$": {
+           "type": "object",
+           "properties": {
+              "params": {
+                "$ref": "#/definitions/resourceParamsSchema"
+              }
+           },
+           "required": [
+              "params"
+           ],
+           "additionalProperties": false
+         }
+      }
     }
   },
   "additionalProperties": {
