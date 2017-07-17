@@ -108,7 +108,7 @@
         "value": {
           "type": "number"
         },
-        "GISOntologyRef": {
+        "ontologyRef": {
           "type": "string",
           "format": "uri"
         }
