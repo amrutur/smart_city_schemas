@@ -115,7 +115,7 @@
       },
       "required": [
         "value",
-        "GISOntologyRef"
+        "ontologyRef"
       ]
     },
     "resourceDataSchema": {

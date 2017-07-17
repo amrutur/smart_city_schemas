@@ -37,8 +37,8 @@
   "data_schema": {
     "type": "object",
     "properties": {
-        "samplingTime": {
-          "type": "number",
+        "dataSamplingInstant": {
+          "type": "string",
           "description": "Sampling Time in UTC format",
           "units": "seconds",
           "readOnly": "true",
