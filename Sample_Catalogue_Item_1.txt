@@ -1,5 +1,5 @@
 {
-  "$schema": "https://github.com/amrutur/smart_city_schemas/blob/master/catalogue_schema.txt",
+  "refCatalogueSchema": "https://github.com/amrutur/smart_city_schemas/blob/master/catalogue_schema_1.txt",
   "id": "rbc_sl_1",
   "resourceSchemaVersion": "1.0.0",
   "resourceType": "streetlight",
