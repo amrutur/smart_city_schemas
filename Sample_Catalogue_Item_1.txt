@@ -30,9 +30,9 @@
   },
   "accessMechanism": {
     "requestAccessSite": "http://rbccps.org/requestAccess",
-    "accessEndPoint": "https://rbccps.org/api/{id}",
-    "subscriptionEndPoint": "mqtt://rbccps.org/subscription/{id}",
-    "additionalResourceInfo": "http://rbccps.org/resourceInfo"
+    "accessEndPoint": "https://rbccps.org/api/rbc_sl_1",
+    "subscriptionEndPoint": "mqtt://rbccps.org/subscription/rbc_sl_1",
+    "additionalResourceInfo": "http://rbccps.org/resourceInfo/rbc_sl_1"
   },
   "data_schema": {
     "type": "object",
