@@ -1,5 +1,5 @@
 {
-  "refCatalogueSchema": "https://github.com/amrutur/smart_city_schemas/blob/master/catalogue_schema_1.txt",
+  "refCatalogueSchema": "https://raw.githubusercontent.com/amrutur/smart_city_schemas/master/catalogue_schema_1.txt",
   "id": "rbc_sl_1",
   "resourceSchemaVersion": "1.0.0",
   "resourceType": "streetlight",
@@ -28,9 +28,12 @@
     "name": "Robert Bosch Centre for Cyber Physical Systems, IISc",
     "website": "http://rbccps.org"
   },
+  "geoLocation": {
+    "address": "80 ft Road, Bangalore, 560012"
+  },
   "accessMechanism": {
-    "requestAccessSite": "http://rbccps.org/requestAccess",
-    "accessEndPoint": "https://rbccps.org/api/rbc_sl_1",
+    "requestAccessSite": "http://rbccps.org/middleware/requestAccess",
+    "accessEndPoint": "https://rbccps.org/middleware/api/{api_ver}/rbc_sl_1",
     "subscriptionEndPoint": "mqtt://rbccps.org/subscription/rbc_sl_1",
     "additionalResourceInfo": "http://rbccps.org/resourceInfo/rbc_sl_1"
   },
